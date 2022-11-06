@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="assets/plugin/iziToast-master/dist/css/iziToast.min.css">
 <!-- endbuild -->
 
-
+<link rel="stylesheet" href="assets/css/style.css">
 
 <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
