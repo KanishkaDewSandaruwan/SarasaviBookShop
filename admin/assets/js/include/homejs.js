@@ -43,7 +43,7 @@ addtoCartProductwithQty = (pid, price) => {
         success: function ($data) {
             console.log($data);
             if ($data === '"Fail"') {
-                window.location.href = 'admin/production/login.php';
+                window.location.href = 'admin/login.php';
             } else {
                 successToastCart();
             }
@@ -71,7 +71,7 @@ addtoCartProduct = (pid, price) => {
         success: function ($data) {
             console.log($data);
             if ($data === '"Fail"') {
-                window.location.href = 'admin/production/login.php';
+                window.location.href = 'admin/login.php';
             } else {
                 successToastCart();
             }
@@ -470,7 +470,7 @@ callUpdateRequestFromHome = (data) => {
 }
 
 
-searchNews = (form) => {
+search = (form) => {
     var formData = new FormData(form);
     var keyword = formData.get('keyword');
     window.location.href = "search.php?keywords=" + keyword;

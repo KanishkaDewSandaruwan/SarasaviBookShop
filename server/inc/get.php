@@ -10,11 +10,27 @@ function getAllCategory()
     return mysqli_query($con, $viewcat);
 }
 
+function getAllCategoryByID($cat_id)
+{
+    include 'connection.php';
+
+    $viewcat = "SELECT * FROM category WHERE is_deleted = '0' AND cat_id = '$cat_id' ORDER BY date_updated DESC ";
+    return mysqli_query($con, $viewcat);
+}
+
 function getAllAuthor()
 {
     include 'connection.php';
 
     $viewcat = "SELECT * FROM author WHERE is_deleted = '0' ORDER BY date_updated DESC ";
+    return mysqli_query($con, $viewcat);
+}
+
+function getAllAuthorBYID($author_id)
+{
+    include 'connection.php';
+
+    $viewcat = "SELECT * FROM author WHERE is_deleted = '0' AND author_id = '$author_id' ORDER BY date_updated DESC ";
     return mysqli_query($con, $viewcat);
 }
 

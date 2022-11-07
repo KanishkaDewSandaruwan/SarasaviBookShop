@@ -16,6 +16,11 @@ window.addEventListener('DOMContentLoaded', event => {
 
 //settings
 
+
+upImage = (cat_id) => {
+    $('#formFile' + cat_id)[0].click();
+}
+
 settingsUpdate = (ele, field) => {
 
     var val = document.getElementById(ele.id).value;
