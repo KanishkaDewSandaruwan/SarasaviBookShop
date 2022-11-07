@@ -118,6 +118,10 @@ ul.row-sm {
     padding-right: 7px
 }
 
+.logo{
+    width: 100%;
+}
+
 .itemside .title {
     display: block;
     margin-bottom: 5px;

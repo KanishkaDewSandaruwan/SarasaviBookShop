@@ -10,7 +10,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                             <a href="index.php"><img src="../img/Sarasavi-Logo-web-02.svg" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -58,12 +58,7 @@
                                 <span>Orders</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="editor.php" class='sidebar-link'>
-                                <i class="bi bi-pencil-fill"></i>
-                                <span>Editor</span>
-                            </a>
-                        </li>
+                         
                         <li class="sidebar-item ">
                             <a href="settings.php" class='sidebar-link'>
                                 <i class="bi bi-gear-fill"></i>
