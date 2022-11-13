@@ -66,6 +66,16 @@
                             </a>
                         </li>
 
+                         <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'admin'): ?>
+
+                        <li class="sidebar-item">
+                            <a href="employee.php" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Employee</span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+
                         <li class="sidebar-item">
                             <a href="logout.php" class='sidebar-link'>
                                 <i class="bi bi-lock"></i>

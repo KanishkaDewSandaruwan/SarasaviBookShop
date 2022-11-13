@@ -55,13 +55,11 @@ login = (myForm) => {
         data: formData,
         success: function ($data) {
             console.log($data);
-            if ($data > 0) {
-                if (formData.get("email") == 'admin') {
-                    window.location.href = 'index.php';
-                } else {
-                    window.location.href = '../index.php';
-                }
-            } else {
+            if ($data == 'admin') {
+                window.location.href = 'index.php';
+            } else if($data == 'customer') {
+                window.location.href = '../index.php';
+            }else{
                 iziToast.error({
                     timeout: 2000,
                     title: 'Error',

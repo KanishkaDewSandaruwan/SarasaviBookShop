@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php include 'pages/head.php'; ?>
+<?php include 'super_admin.php'; ?>
 
 <body>
     <div id="app">
@@ -10,7 +11,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                             <a href="index.php"><img src="../img/Sarasavi-Logo-web-02.svg" alt="Logo" srcset=""></a>
+                            <a href="index.php"><img src="../img/Sarasavi-Logo-web-02.svg" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -34,7 +35,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item">
                             <a href="category.php" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Category</span>
@@ -58,23 +59,19 @@
                                 <span>Orders</span>
                             </a>
                         </li>
-                         
+
                         <li class="sidebar-item">
                             <a href="settings.php" class='sidebar-link'>
                                 <i class="bi bi-gear-fill"></i>
                                 <span>Settings</span>
                             </a>
                         </li>
-
-                         <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'admin'): ?>
-
-                        <li class="sidebar-item">
+                        <li class="sidebar-item active">
                             <a href="employee.php" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Employee</span>
                             </a>
                         </li>
-                        <?php endif; ?>
 
                         <li class="sidebar-item">
                             <a href="logout.php" class='sidebar-link'>
@@ -82,6 +79,7 @@
                                 <span>Logout</span>
                             </a>
                         </li>
+
 
                     </ul>
                 </div>
@@ -98,10 +96,10 @@
             <div class="page-heading">
                 <div class="row">
                     <div class="col-md-10">
-                        <h3>Category Statistics</h3>
+                        <h3>Employee Statistics</h3>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CategoryModal">Add
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EmployeeModal">Add
                             New</button>
                     </div>
                 </div>
@@ -113,74 +111,56 @@
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
-                                        <th>Category Name</th>
-                                        <th>Image</th>
-                                        <th></th>
-                                        <th></th>
+
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>NIC</th>
+                                        <th>Address</th>
+                                        <th>Gender</th>
 
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Category Name</th>
-                                        <th>Image</th>
-                                        <th></th>
-                                        <th></th>
+
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>NIC</th>
+                                        <th>Address</th>
+                                        <th>Gender</th>
 
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     <?php 
-                            $getall = getAllCategory();
+                                $getall = getAlleditor();
 
-                            while($row=mysqli_fetch_assoc($getall)){
+                                while($row=mysqli_fetch_assoc($getall)){ 
+                                  $editor_id = $row['editor_id'];
+                                  ?>
 
-                                $cat_id = $row['cat_id'];
-                                $img = $row['cat_image'];
-                                $img_src = "../server/uploads/category/".$img;?>
+
                                     <tr>
-                                        <td>
-                                            <div class="form-group">
-                                                <input id="cat_name  <?php echo $cat_id; ?>" type="text" name="cat_name"
-                                                    onchange="updateData(this, '<?php echo $cat_id; ?>', 'cat_name', 'category', 'cat_id');"
-                                                    value="<?php echo $row['cat_name']; ?>"
-                                                    data-parsley-trigger="change" required=""
-                                                    placeholder="Enter Category Name" autocomplete="off"
-                                                    class="form-control">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <script
-                                                src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-                                            </script>
 
-                                            <img id="images<?php echo $cat_id; ?>"
-                                                onclick="upImage(<?php echo $cat_id; ?>)" width="200px"
-                                                src='<?php echo $img_src; ?>'>
-                                            <form class="w-10" enctype="multipart/form-data" method="POST">
-                                                <div class="mb-3">
-                                                    <input class="form-control" value="<?php echo $row['cat_id'] ?>"
-                                                        name="id" type="hidden" id="id">
-                                                    <input class="form-control" value="cat_id" name="id_fild"
-                                                        type="hidden" id="id_fild">
-                                                    <input class="form-control" value="category" name="table"
-                                                        type="hidden" id="table">
-                                                    <input class="form-control" value="cat_image" name="field"
-                                                        type="hidden" id="field">
-                                                    <input style="display: none;" onchange="uploadImage(this.form);"
-                                                        class="form-control" name="file" type="file"
-                                                        id="formFile<?php echo $cat_id; ?>">
-                                                </div>
-                                            </form>
+                                        <td><?php echo $row['name']; ?></td>
+                                        <td><?php echo $row['email']; ?></td>
+                                        <td><?php echo $row['phone']; ?></td>
+                                        <td><?php echo $row['nic']; ?></td>
+                                        <td><?php echo $row['address']; ?></td>
+                                        <td><?php if ($row['gender']=="1"){ echo "Male"; }else{ echo "Female";} ?>
+                                        </td>
+                                        <td> <a href="empolyee_edit.php?editor_id=<?php echo $editor_id; ?>"
+                                                class="btn btn-darkblue"> <i class="fa-solid fa-edit"></i>
+                                            </a>
+
+                                            <button type="button"
+                                                onclick="deleteData(<?php echo $row['editor_id']; ?>,'editor', 'editor_id')"
+                                                class="btn btn-darkblue"> <i class="fa-solid fa-trash"></i>
+                                            </button>
 
                                         </td>
-                                        <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'admin'): ?>
-
-                                        <td><button type="button"
-                                                onclick="deleteDataCategory(<?php echo $row['cat_id']; ?>,'category', 'cat_id')"
-                                                class="btn btn-darkblue"> <i class="fa-solid fa-trash"></i> Delete
-                                            </button></td>
-                                        <?php endif; ?>
                                     </tr>
 
                                     <?php } ?>
@@ -206,7 +186,7 @@
 </body>
 
 <!-- Modal -->
-<div class="modal fade" id="CategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="EmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content ">
             <div class="modal-header">
@@ -216,18 +196,54 @@
             <form action="" method="post" id="basicform" data-parsley-validate="" enctype="multipart/form-data">
                 <div class="modal-body bg-white">
                     <form action="" method="post" id="basicform" data-parsley-validate="">
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" name="category_name" id="cat_name"
-                                placeholder="Category Name" required>
+                        <div class="form-group mt-2">
+                            <label for="inputName">Name</label>
+                            <input id="inputName" type="text" name="name" data-parsley-trigger="change" required=""
+                                placeholder="Enter Full Name" autocomplete="off" class="form-control">
                         </div>
-                        <div class="col-md-12 mt-3">
-                            <input class="form-control" name="file" type="file" id="file">
+
+                        <div class="form-group mt-2">
+                            <label for="inputEmail">Email address</label>
+                            <input id="inputEmail" type="email" name="email" data-parsley-trigger="change" required=""
+                                placeholder="Enter email" autocomplete="off" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="inputPhone">Phone Number</label>
+                            <input id="inputPhone" type="text" name="phone" data-parsley-trigger="change" required=""
+                                placeholder="Enter Phone Number" autocomplete="off" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="inputNIC">NIC</label>
+                            <input id="inputNIC" type="text" name="nic" data-parsley-trigger="change" required=""
+                                placeholder="Enter NIC Number" autocomplete="off" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="inputAddress">Address</label>
+                            <input id="inputAddress" type="text" name="address" data-parsley-trigger="change"
+                                required="" placeholder="Enter Address" autocomplete="off" class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="inputGender">Gender</label>
+                            <select class="form-select" name="gender" id="gender" aria-label="Default select example">
+                                <option value="1" selected>Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="inputPassword">Password</label>
+                            <input id="inputPassword" type="password" name="password" placeholder="Password" required=""
+                                class="form-control">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="inputRepeatPassword">Repeat Password</label>
+                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="password"
+                                required="" name="conf_password" placeholder="Password" class="form-control">
                         </div>
 
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" onclick="addAuthor(this.form)" name="submit" class="btn btn-primary">Save
+                    <button type="button" onclick="addEmployee(this.form)" name="submit" class="btn btn-primary">Save
                         changes</button>
                 </div>
             </form>
@@ -235,4 +251,5 @@
         </div>
     </div>
 </div>
+
 </html>

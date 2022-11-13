@@ -52,6 +52,22 @@ function getAllItems()
     return mysqli_query($con, $viewcat);
 }
 
+function getAlleditor()
+{
+    include 'connection.php';
+
+    $q1 = "SELECT * FROM editor WHERE is_deleted = 0 AND email != 'admin'";
+    return mysqli_query($con, $q1);
+}
+
+function geteditorByID($editor_id)
+{
+    include 'connection.php';
+
+    $q1 = "SELECT * FROM editor WHERE is_deleted = 0 AND editor_id = '$editor_id'";
+    return mysqli_query($con, $q1);
+}
+
 function getAllProductItems()
 {
     include 'connection.php';
@@ -145,18 +161,45 @@ function getLoginAdmin($data)
     $email = $data['email'];
     $password = $data['password'];
 
-    $loginAdmin = "SELECT * FROM customer WHERE email = '$email' AND password ='$password'";
-    $count_loginAdmin = mysqli_query($con, $loginAdmin);
+    $loginAdmin = "SELECT * FROM editor WHERE email = '$email' AND password ='$password'";
+    $countloginAdmin = mysqli_query($con, $loginAdmin);
+    $counts_loginAdmin = mysqli_num_rows($countloginAdmin);
 
-    if ($email == 'admin') {
-        $_SESSION['admin'] = $email;
-    }
-    else {
+    $loginCustomer = "SELECT * FROM customer WHERE email = '$email' AND password ='$password'";
+    $count_loginCustomer = mysqli_query($con, $loginCustomer);
+    $counts_loginCustomer = mysqli_num_rows($count_loginCustomer);
+
+    $value = "";
+
+    if($counts_loginAdmin > 0){   
+
+        $value = 'admin';
+
+        $res = checkeditor($email);
+        $row = mysqli_fetch_assoc($res);
+        $_SESSION['admin'] = $row['email'];
+        
+
+     
+    }else if($counts_loginCustomer > 0){
+
+        $value = 'customer';
+
         $res = checkCustomerByEmail($email);
         $row = mysqli_fetch_assoc($res);
         $_SESSION['customer'] = $row['customer_id'];
+        
     }
-    return mysqli_num_rows($count_loginAdmin);
+     echo $value;
+    
+}
+
+function checkeditor($email)
+{
+    include 'connection.php';
+
+    $q1 = "SELECT * FROM editor WHERE email='$email' AND is_deleted='0'";
+    return mysqli_query($con, $q1);
 }
 
 function checkCustomerByEmail($email)

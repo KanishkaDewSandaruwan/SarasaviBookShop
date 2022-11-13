@@ -115,6 +115,8 @@ else if (isset($_GET['function_code']) && $_GET['function_code'] == 'login') {
     checkUserEmail($_POST);
 }else if (isset($_GET['function_code']) && $_GET['function_code'] == 'checkPassword') {
     checkuserPassword($_POST);
+}else if (isset($_GET['function_code']) && $_GET['function_code'] == 'addEmployee') {
+    addEmployee($_POST);
 }
 
 

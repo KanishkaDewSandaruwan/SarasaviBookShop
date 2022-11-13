@@ -139,3 +139,52 @@ addCustomer = (form) => {
         } else { errorMessage("Please Enter Email"); }
     } else { errorMessage("Please Enter Full Name"); }
 }
+
+
+
+addEmployee = (form) => {
+    let fd = new FormData(form);
+
+    if (fd.get('name').trim() != '') {
+        if (fd.get('email').trim() != '') {
+            if (fd.get('phone').trim() != '') {
+                if (fd.get('nic').trim() != '') {
+                    if (fd.get('address').trim() != '') {
+                        if (fd.get('password').trim() != '') {
+                            if (fd.get('conf_password').trim() != '') {
+                                if (fd.get('password') == fd.get('conf_password')) {
+                                    if (emailvalidation(fd.get('email'))) {
+                                        if (phonenumber(fd.get('phone'))) {
+
+                                            $.ajax({
+                                                method: "POST",
+                                                url: "../server/api.php?function_code=addEmployee",
+                                                data: fd,
+                                                success: function ($data) {
+                                                    console.log($data);
+
+                                                    if ($data > 0) {
+                                                        errorMessage("This Employe Already Registerd!");
+                                                    } else {
+                                                        successToast();
+                                                    }
+                                                },
+                                                cache: false,
+                                                contentType: false,
+                                                processData: false,
+                                                error: function (error) {
+                                                    console.log(`Error ${error}`);
+                                                }
+                                            });
+
+                                        }
+                                    }
+                                } else { errorMessage("Password is Not Match"); }
+                            } else { errorMessage("Please Confirm Password"); }
+                        } else { errorMessage("Please Enter Password"); }
+                    } else { errorMessage("Please Enter Address"); }
+                } else { errorMessage("Please Enter NIC"); }
+            } else { errorMessage("Please Enter Phone number"); }
+        } else { errorMessage("Please Enter Email"); }
+    } else { errorMessage("Please Enter Full Name"); }
+}

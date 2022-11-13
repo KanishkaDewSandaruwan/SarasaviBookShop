@@ -37,6 +37,22 @@ function addProduct($data, $img)
 	}
 }
 
+function addEmployee($data)
+{
+	include 'connection.php';
+
+	$name = $data['name'];
+	$email = $data['email'];
+	$phone = $data['phone'];
+	$nic = $data['nic'];
+	$address = $data['address'];
+	$gender = $data['gender'];
+
+	$sql = "INSERT INTO editor(name, email, phone, nic, address, gender, is_deleted) VALUES('$name', '$email', '$phone', '$nic', '$address', '$gender', 0 )";
+	return mysqli_query($con, $sql);
+	
+}
+
 
 //contact
 function addMessage($data)
