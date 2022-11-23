@@ -144,7 +144,7 @@ function successToastwithLogout() {
         title: 'Saving..',
         message: 'Successfully Changed!',
         onClosing: function () {
-            window.location.href = 'admin/production/logout.php';
+            window.location.href = 'admin/logout.php';
         }
     })
 }

@@ -139,7 +139,7 @@
                                 $img = $row['cat_image'];
                                 $img_src = "../server/uploads/category/".$img;?>
                                     <tr>
-                                        <td>
+                                        <td><p style="display: none;"><?php echo $row['cat_name']; ?></p>
                                             <div class="form-group">
                                                 <input id="cat_name  <?php echo $cat_id; ?>" type="text" name="cat_name"
                                                     onchange="updateData(this, '<?php echo $cat_id; ?>', 'cat_name', 'category', 'cat_id');"
@@ -227,7 +227,7 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" onclick="addAuthor(this.form)" name="submit" class="btn btn-primary">Save
+                    <button type="button" onclick="addCategory(this.form)" name="submit" class="btn btn-primary">Save
                         changes</button>
                 </div>
             </form>
@@ -235,4 +235,9 @@
         </div>
     </div>
 </div>
+<!-- <style>
+    .dataTable-input{
+    display: none;
+}
+</style> -->
 </html>

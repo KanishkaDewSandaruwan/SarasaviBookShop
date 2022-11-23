@@ -110,7 +110,7 @@
                 <section class="row">
                     <div class="col-12 col-lg-12">
                         <div class="row">
-                            <table id="datatablesSimple">
+                            <table id="datatablesSimple" class="author">
                                 <thead>
                                     <tr>
 
@@ -141,6 +141,7 @@
 
                                     <tr>
                                     <td>
+                                        <p style="display: none;"><?php echo $row['author_name']; ?></p>
                                             <div class="form-group">
                                                 <input id="author_name  <?php echo $author_id; ?>" type="text" name="author_name"
                                                     onchange="updateData(this, '<?php echo $author_id; ?>', 'author_name', 'author', 'author_id');"

@@ -106,7 +106,7 @@
 
 
                 <?php 
-                $getall = getAllOrders();
+                $getall = getAllOrdersByCustomer($_SESSION['customer']);
 
                 while($row=mysqli_fetch_assoc($getall)){ 
                 $order_id = $row['order_id'];
@@ -180,6 +180,9 @@
                                     onchange='updateDataFromHome(this, "<?php echo $order_id; ?>","order_status", "product_orders", "order_id")'
                                     id="order_status <?php echo $order_id; ?>" class='form-control norad tx12'
                                     name="order_status" type='text'>
+                                    <option value="0">
+                                        Select Cancel to Cancel Order
+                                    </option>
                                     <option value="5" <?php if ($row['order_status']=="5") echo "selected"; ?>>
                                         Canceled
                                     </option>

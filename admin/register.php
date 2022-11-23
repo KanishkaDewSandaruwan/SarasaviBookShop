@@ -53,7 +53,7 @@
                                 <option value="1" selected>Male</option>
                                 <option value="0">Female</option>
                             </select>
-                            <label for="floatingText">Address</label>
+                            <label for="floatingText">Gender</label>
                         </div>
 
                         <div class="form-floating mb-4">

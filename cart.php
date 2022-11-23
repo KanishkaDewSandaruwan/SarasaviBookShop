@@ -164,8 +164,10 @@
                             <p id="total">Rs. <?php echo $total; ?>.00</p>
                         </div>
                     </div>
+                    <?php if($total > 0) :?>
                     <a href="checkout.php?total=<?php echo $total; ?>"><button id="btn-checkout"
-                            class="btn btn-primary"><span>Checkout</span></button></a>
+                    class="btn btn-primary"><span>Checkout</span></button></a>
+                    <?php endif; ?>
                 </div>
             </div>
             </div>
