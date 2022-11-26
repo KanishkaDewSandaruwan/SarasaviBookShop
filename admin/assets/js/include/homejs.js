@@ -258,7 +258,7 @@ changeEmail = (form) => {
 
             } else { errorMessage("Current Emaiil is Wrong!"); }
         } else { errorMessage("Please Enter Email Address"); }
-    } else { errorMessage("Please Enter Your Name"); }
+    } else { errorMessage("Please Enter Current Email"); }
 
 }
 

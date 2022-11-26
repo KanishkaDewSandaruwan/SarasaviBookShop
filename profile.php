@@ -92,8 +92,7 @@
             <div class="container">
                 <div class="row align-items-center min-vh-md-75">
                     <div class="col-md-7 col-lg-6 py-6 text-sm-start text-center">
-                        <h5 class="mt-6 mb-sm-4 display-4 fw-semi-bold lh-sm fs-4 fs-lg-6 fs-xxl-7 text-white">Contact
-                            Us
+                        <h5 class="mt-6 mb-sm-4 display-4 fw-semi-bold lh-sm fs-4 fs-lg-6 fs-xxl-7 text-white">Profile
                         </h5>
 
                     </div>

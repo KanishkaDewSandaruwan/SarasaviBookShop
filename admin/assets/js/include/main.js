@@ -138,7 +138,7 @@ changePasswordAdmin = (form) => {
                             field: 'password',
                             value: formData.get('new_password'),
                             id_fild: 'email',
-                            table: 'customer',
+                            table: 'editor',
                         }
 
                         $.ajax({

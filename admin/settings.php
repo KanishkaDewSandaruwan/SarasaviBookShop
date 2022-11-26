@@ -59,6 +59,13 @@
                             </a>
                         </li>
                          
+                        <li class="sidebar-item">
+                            <a href="message.php" class='sidebar-link'>
+                                <i class="bi bi-envelope"></i>
+                                <span>Message</span>
+                            </a>
+                        </li>
+                         
                         <li class="sidebar-item active">
                             <a href="settings.php" class='sidebar-link'>
                                 <i class="bi bi-gear-fill"></i>

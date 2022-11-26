@@ -47,8 +47,9 @@ function addEmployee($data)
 	$nic = $data['nic'];
 	$address = $data['address'];
 	$gender = $data['gender'];
+	$password = $data['password'];
 
-	$sql = "INSERT INTO editor(name, email, phone, nic, address, gender, is_deleted) VALUES('$name', '$email', '$phone', '$nic', '$address', '$gender', 0 )";
+	$sql = "INSERT INTO editor(name, email, phone, nic, address, gender,password, is_deleted) VALUES('$name', '$email', '$phone', '$nic', '$address', '$gender', '$password', 0 )";
 	return mysqli_query($con, $sql);
 	
 }

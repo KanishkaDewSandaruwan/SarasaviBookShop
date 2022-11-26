@@ -92,7 +92,7 @@
             <div class="container">
                 <div class="row align-items-center min-vh-md-75">
                     <div class="col-md-7 col-lg-6 py-6 text-sm-start text-center">
-                        <h1 class="mt-6 mb-sm-4 display-4 fw-semi-bold lh-sm fs-4 fs-lg-6 fs-xxl-7 text-white">
+                        <h1 class="mt-6 mb-sm-4 display-4 fw-semi-bold lh-sm fs-4 fs-lg-6 fs-xxl-7 text-dark">
                             <?php echo $res['header_title']; ?></h1>
                         <p class="mb-4 fs-1"><?php echo $res['header_desc']; ?></p>
                     </div>
@@ -124,7 +124,7 @@
               if ($row2 = mysqli_fetch_assoc($getallCp2)) {
                   ?>
 
-                    <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0 text-center" style="height: 300px;">
+                    <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0 text-center mt-5" style="height: 300px;">
                         <a href="books.php?cat_id=<?php echo $cat_id; ?>">
                             <div class="px-0 px-lg-3"><img class="img-fluid mb-2" style="width: 100%; height: 100%; "
                                     src="<?php echo $img_src; ?>" width="100" alt="..." />
@@ -199,7 +199,7 @@
                                                     <li class="fw-semi-bold text-black">
                                                         <?php echo $row2['product_highlight']; ?></li>
                                                 </ul>
-                                                <p><?php echo $row2['product_highlight']; ?> </p>
+                                                <p><?php echo $row2['product_description']; ?> </p>
                                                 <button type="button"
                                                     onclick="addtoCartProduct(<?php echo $pid; ?>, <?php echo $row2['product_price']; ?>)"
                                                     class="btn btn-primary">Add to Cart</button>

@@ -290,7 +290,7 @@ function checkPasswordByName($data){
 	$email = $data['email'];
 	$password = $data['password'];
 
-	$viewcat = "SELECT * FROM customer WHERE password = '$password' AND email = '$email' ";
+	$viewcat = "SELECT * FROM editor WHERE password = '$password' AND email = '$email' ";
 	$result = mysqli_query($con,$viewcat);
 	$count = mysqli_num_rows($result);
 	echo $count;
